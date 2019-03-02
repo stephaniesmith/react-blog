@@ -1,16 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PostList from './PostList';
 
-const App = props => {
+const App = () => {
   return (
     <div className="ui container">
-      App!
+      <PostList/>
     </div>
   );
-};
-
-App.propTypes = {
-
 };
 
 export default App;
