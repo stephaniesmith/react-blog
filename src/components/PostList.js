@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchPosts } from '../actions';
+import UserHeader from './UserHeader';
 
 export class PostList extends Component {
   componentDidMount = () => {
@@ -12,7 +13,7 @@ export class PostList extends Component {
     const { posts } = this.props;
     if(!posts.length) return <div>No Songs!</div>;
 
-    return posts.map(({ id, title, body }) => {
+    return posts.map(({ id, title, body, userId }) => {
       return (
         <div className="item" key={id}>
           <i className="large middle aligned icon user"/>
@@ -20,6 +21,7 @@ export class PostList extends Component {
             <h2>{title}</h2>
             <p>{body}</p>
           </div>
+          <UserHeader userId={userId}/>
         </div>
       );
     });
