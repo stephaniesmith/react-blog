@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fetchPosts } from '../actions';
 
 export class PostList extends Component {
+  componentDidMount = () => {
+    this.props.fetchPosts();
+  };
+  
   render() {
     return (
       <div>
@@ -10,4 +17,8 @@ export class PostList extends Component {
   }
 }
 
-export default PostList;
+PostList.propTypes = {
+  fetchPosts: PropTypes.func,
+};
+
+export default connect(null, { fetchPosts })(PostList);
