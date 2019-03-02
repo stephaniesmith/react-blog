@@ -9,6 +9,9 @@ export class PostList extends Component {
   };
   
   render() {
+    const { posts } = this.props;
+    if(!posts.length) return <div>No Songs!</div>;
+
     return (
       <div>
         PostList!
@@ -21,4 +24,8 @@ PostList.propTypes = {
   fetchPosts: PropTypes.func,
 };
 
-export default connect(null, { fetchPosts })(PostList);
+const mapStateToProps = ({ posts }) => ({
+  posts
+});
+
+export default connect(mapStateToProps, { fetchPosts })(PostList);
